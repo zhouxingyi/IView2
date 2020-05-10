@@ -3,6 +3,7 @@ package com.fishman.zxy.iview.view;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -75,6 +76,7 @@ public class ZViewGroup extends ViewGroup {
         int result=0;
         int specModel=MeasureSpec.getMode(spec); //获取布局的测量模式
         int specSize=MeasureSpec.getSize(spec);  //测量大小
+        Log.e("specModel",specModel+"--specModel -----"+specSize);
         if(specModel==MeasureSpec.EXACTLY){
             result=specSize;
         }else {
@@ -92,14 +94,16 @@ public class ZViewGroup extends ViewGroup {
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
              int left,top,right,bottom;
              int childCount=getChildCount();
+             int topcount=0;
              for(int i=0;i<childCount;i++){
                  View childview=getChildAt(i);
                  MarginLayoutParams mlp= (MarginLayoutParams) childview.getLayoutParams();
-                 top=mlp.topMargin;
+                 top=topcount+mlp.topMargin;
                  left=mlp.leftMargin;
-                 right=left+mlp.rightMargin;
-                 bottom=top+mlp.bottomMargin;
+                 right=left+childview.getMeasuredWidth();
+                 bottom=top+childview.getMeasuredHeight();
                  childview.layout(left,top,right,bottom);
+                 topcount+=(bottom-top)+mlp.topMargin+mlp.bottomMargin;
              }
              //getMeasuredHeight 和 getHeight的区别，仅仅是时机不同而已
              // getMeasuredHeight 必须要onMeasure之后才能获取到值
