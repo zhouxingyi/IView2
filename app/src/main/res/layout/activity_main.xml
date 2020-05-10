@@ -24,6 +24,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="钓鱼人"
+        android:textSize="24sp"
+        android:background="@color/colorPrimary"
+        />
+    <TextView
+        android:layout_marginTop="100dp"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:text="钓鱼人    钓鱼人"
+        android:textSize="24sp"
+        android:background="@color/colorPrimary"
+        />
+    <TextView
+        android:layout_marginTop="100dp"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:text="钓鱼人钓鱼人"
+        android:textSize="24sp"
         android:background="@color/colorPrimary"
         />
 
